@@ -64,3 +64,34 @@ export const getCompanyById = async (companyId) => {
     throw error
   }
 }
+
+export const createContact = async (postId, contact) => {
+  console.log('creating contact', contact)
+  try {
+    const res = await fetch(`${BASE_URL}${postId}/contacts`, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(contact)
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const deleteContact = async (postId, contactId) => {
+  try {
+    const res = await fetch(`${BASE_URL}${postId}/contacts/${contactId}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + tokenService.getToken() }
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
