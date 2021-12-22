@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.css'
 import * as authService from '../../services/authService'
+import coder from '../../assets/animation/coder.json'
+import Animation from '../../components/misc/Animation'
 
 const LoginForm = props => {
   const [formData, setFormData] = useState({
